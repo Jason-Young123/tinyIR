@@ -10,40 +10,47 @@ AR     := ar
 # Project
 PROJECT     := tinyir
 OPT         := $(PROJECT)-opt
-SRC_DIR 	:= src
+SRC_DIR     := src
 DIALECT_DIR := $(SRC_DIR)/dialect
+PASS_DIR    := $(SRC_DIR)/passes
 BUILD_DIR   := build
 TEST_DIR    := test
 
-# 存放自动生成的.inc文件
-GEN_DIR     := $(BUILD_DIR)/gen
-OBJ_DIR     := $(BUILD_DIR)/obj
-LIB_DIR     := $(BUILD_DIR)/lib
-BIN_DIR     := $(BUILD_DIR)/bin
+# 存放自动生成/编译文件
+GEN_DIR         := $(BUILD_DIR)/gen
+OBJ_DIR         := $(BUILD_DIR)/obj
+DIALECT_OBJ_DIR := $(OBJ_DIR)/dialect
+PASS_OBJ_DIR    := $(OBJ_DIR)/passes
+LIB_DIR         := $(BUILD_DIR)/lib
+BIN_DIR         := $(BUILD_DIR)/bin
 
 # src
 TD_SRCS      := $(wildcard $(DIALECT_DIR)/*.td)
 DIALECT_SRCS := $(wildcard $(DIALECT_DIR)/*.cpp)
 DIALECT_HDRS := $(wildcard $(DIALECT_DIR)/*.h)
+PASS_SRCS    := $(wildcard $(PASS_DIR)/*.cpp)
+PASS_HDRS    := $(wildcard $(PASS_DIR)/*.h)
 OPT_SRC      := $(SRC_DIR)/$(OPT).cpp
-TEST         := $(TEST_DIR)/mytest2.mlir
+TEST         := $(TEST_DIR)/passes/simpleAdd.mlir
 
 # outputs
-DIALECT_OBJS := $(patsubst $(DIALECT_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(DIALECT_SRCS))
+DIALECT_OBJS := $(patsubst $(DIALECT_DIR)/%.cpp,$(DIALECT_OBJ_DIR)/%.o,$(DIALECT_SRCS))
+PASS_OBJS    := $(patsubst $(PASS_DIR)/%.cpp,$(PASS_OBJ_DIR)/%.o,$(PASS_SRCS))
 OPT_OBJ      := $(OBJ_DIR)/$(OPT).o
 LIB          := $(LIB_DIR)/lib$(PROJECT).a
 BIN          := $(BIN_DIR)/$(OPT)
 TBLGEN_STAMP := $(GEN_DIR)/.tblgen.stamp
+DEPS         := $(DIALECT_OBJS:.o=.d) $(PASS_OBJS:.o=.d) $(OPT_OBJ:.o=.d)
 
 # flags
-CPPFLAGS := -I$(MLIR_INCLUDE_DIR) -I$(DIALECT_DIR) -I$(GEN_DIR)
+CPPFLAGS := -I$(MLIR_INCLUDE_DIR) -I$(SRC_DIR) -I$(DIALECT_DIR) -I$(PASS_DIR) -I$(GEN_DIR)
 CXXFLAGS := -std=c++17 -fPIC -MMD -MP
 TBLGEN_FLAGS := -I$(DIALECT_DIR) -I$(MLIR_INCLUDE_DIR) --write-if-changed
 LDFLAGS := -L $(MLIR_LIB_DIR) -Wl,-rpath,$(MLIR_LIB_DIR)
 LDLIBS := -lMLIR -lLLVM
 
-# 声明伪目标, 避免被当前目录下的同名文件干扰从而跳过执行make XXX
-.PHONY: all build tblgen test clean
+# 声明伪目标
+.PHONY: all build tblgen test pass clean
 
 all: build
 
@@ -73,21 +80,29 @@ $(TBLGEN_STAMP): $(TD_SRCS)
 	@touch $@
 
 ### +CXX dialect/*.cpp -> .o
-$(OBJ_DIR)/%.o: $(DIALECT_DIR)/%.cpp $(TBLGEN_STAMP)
-	@mkdir -p $(OBJ_DIR)
+$(DIALECT_OBJ_DIR)/%.o: $(DIALECT_DIR)/%.cpp $(TBLGEN_STAMP)
+	@mkdir -p $(DIALECT_OBJ_DIR)
+	@echo "+CXX     $< --> $@"
+	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) \
+		-c $< \
+		-o $@
+
+### +CXX passes/*.cpp -> .o
+$(PASS_OBJ_DIR)/%.o: $(PASS_DIR)/%.cpp
+	@mkdir -p $(PASS_OBJ_DIR)
 	@echo "+CXX     $< --> $@"
 	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) \
 		-c $< \
 		-o $@
 
 ### +AR .o -> .a
-$(LIB): $(DIALECT_OBJS)
+$(LIB): $(DIALECT_OBJS) $(PASS_OBJS)
 	@mkdir -p $(LIB_DIR)
-	@echo "+AR      $(DIALECT_OBJS) --> $(LIB)"
+	@echo "+AR      $(DIALECT_OBJS) $(PASS_OBJS) --> $(LIB)"
 	@$(AR) rcs $@ $^
 
 ### +CXX tinyir-opt.cpp -> .o
-$(OPT_OBJ): $(OPT_SRC) $(DIALECT_HDRS) $(TBLGEN_STAMP)
+$(OPT_OBJ): $(OPT_SRC) $(DIALECT_HDRS) $(PASS_HDRS) $(TBLGEN_STAMP)
 	@mkdir -p $(OBJ_DIR)
 	@echo "+CXX     $(OPT_SRC) --> $(OPT_OBJ)"
 	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) \
@@ -108,7 +123,15 @@ test: $(BIN)
 	@echo "+TEST    $(TEST) --> stdout"
 	@$(BIN) $(TEST)
 
--include $(OBJ_DIR)/*.d
+### +PASS .mlir -> stdout
+pass: $(BIN)
+	@echo "+PASS    $(TEST) --> simplify-add"
+	@$(BIN) $(TEST) \
+		--pass-pipeline='builtin.module(func.func(inspect-ir))'
+
+
+
+-include $(DEPS)
 
 clean:
 	@echo "+CLEAN   $(BUILD_DIR)"

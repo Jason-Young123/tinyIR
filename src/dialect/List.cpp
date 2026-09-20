@@ -26,10 +26,12 @@ void ListDialect::initialize() {
 #define GET_OP_CLASSES
 #include "List_Ops.cpp.inc"
 
+// 对应let hasVerifier = 1
 LogicalResult MapOp::verify() {
   return success();
 }
 
+// 对应let hasRegionVerifier = 1
 LogicalResult MapOp::verifyRegions() {
   return success();
 }

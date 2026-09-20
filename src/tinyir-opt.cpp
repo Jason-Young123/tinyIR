@@ -5,6 +5,7 @@
 
 #include "dialect/Tutorial.h"
 #include "dialect/List.h"
+#include "passes/Passes.h" //用于提供注册函数
 
 int main(int argc, char **argv) {
   mlir::DialectRegistry registry;
@@ -22,6 +23,14 @@ int main(int argc, char **argv) {
   registry.insert<
       mlir::tutorial::TutorialDialect,
       mlir::list::ListDialect>();
+
+  // 自定义pass
+  tinyir::registerDemoPass();
+  tinyir::registerInspectIRPass();
+  //tinyir::registerUseDefPass();
+  //tinyir::registerCFGInspectPass();
+  //tinyir::registerBuilderSafetyPass();
+  //tinyir::registerRewriterDemoPass();
 
   return mlir::asMainReturnCode(
       mlir::MlirOptMain(

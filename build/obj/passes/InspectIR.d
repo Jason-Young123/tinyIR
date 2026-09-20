@@ -1,14 +1,8 @@
-build/obj/tinyir-opt.o: src/tinyir-opt.cpp \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/InitAllDialects.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/InitAllExtensions.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/InitAllPasses.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Tools/mlir-opt/MlirOptMain.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Debug/CLOptionsSetup.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Debug/BreakpointManagers/FileLineColLocBreakpointManager.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Debug/BreakpointManager.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Action.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Unit.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OperationSupport.h \
+build/obj/passes/InspectIR.o: src/passes/InspectIR.cpp \
+ src/passes/Passes.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Arith/IR/Arith.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Bytecode/BytecodeOpInterface.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Bytecode/BytecodeImplementation.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Attributes.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/AttributeSupport.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/MLIRContext.h \
@@ -62,11 +56,14 @@ build/obj/tinyir-opt.o: src/tinyir-opt.cpp \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Types.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/TypeSupport.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/Twine.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Diagnostics.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Location.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinLocationAttributes.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Dialect.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OperationSupport.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BlockSupport.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Value.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/UseDefLists.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Location.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinLocationAttributes.h.inc \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/ilist.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/simple_ilist.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/ilist_base.h \
@@ -106,21 +103,10 @@ build/obj/tinyir-opt.o: src/tinyir-opt.cpp \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/ErrorOr.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/Format.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinAttributes.h.inc \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Diagnostics.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/TypeRange.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/ValueRange.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/Repeated.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/TrailingObjects.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/StringMap.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/StringMapEntry.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Debug/ExecutionContext.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Operation.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Region.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Support/ToolUtilities.h \
- src/dialect/Tutorial.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Bytecode/BytecodeOpInterface.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Bytecode/BytecodeImplementation.h \
- /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Dialect.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/DialectInterface.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OpImplementation.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinTypes.h \
@@ -131,30 +117,82 @@ build/obj/tinyir-opt.o: src/tinyir-opt.cpp \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinTypeConstraints.h.inc \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OpDefinition.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/ODSSupport.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Operation.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Region.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/SMLoc.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OpAsmOpInterface.h.inc \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OpAsmDialectInterface.h.inc \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Bytecode/BytecodeDialectInterface.h.inc \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Bytecode/BytecodeOpInterface.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/CastInterfaces.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/CastInterfaces.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/ControlFlowInterfaces.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/PatternMatch.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Builders.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinOps.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OwningOpRef.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/RegionKindInterface.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/RegionKindInterface.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/SymbolTable.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/SetVector.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/StringMap.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/StringMapEntry.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/RWMutex.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/Threading.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/SymbolInterfaces.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/SymbolInterfacesAttrInterface.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/SymbolInterfacesTypeInterface.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/DataLayoutInterfaces.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/TypeSize.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/DataLayoutAttrInterface.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/DataLayoutDialectInterface.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/DataLayoutOpInterface.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/DataLayoutTypeInterface.h.inc \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/SideEffectInterfaces.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/SideEffectInterfaces.h.inc \
- build/gen/Tutorial_Dialect.h.inc build/gen/Tutorial_Ops.h.inc \
- src/dialect/List.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinOps.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/PDLPatternMatch.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Config/mlir-config.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/TypeSwitch.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/ControlFlowInterfaces.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/InferIntDivisibilityOpInterface.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/InferIntDivisibilityOpInterface.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/InferIntRangeInterface.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/InferIntRangeInterface.h.inc \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/InferTypeOpInterface.h \
  /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/InferTypeOpInterface.h.inc \
- build/gen/List_Dialect.h.inc build/gen/List_Types.h.inc \
- build/gen/List_Ops.h.inc src/passes/Passes.h
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/InitAllDialects.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/InitAllExtensions.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/InitAllPasses.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Tools/mlir-opt/MlirOptMain.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Debug/CLOptionsSetup.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Debug/BreakpointManagers/FileLineColLocBreakpointManager.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Debug/BreakpointManager.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Action.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Unit.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OperationSupport.h:
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/VectorInterfaces.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/VectorInterfaces.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/StringExtras.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/APSInt.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/SmallString.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Arith/IR/ArithOpsDialect.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Arith/IR/ArithOpsEnums.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Arith/IR/ArithOpsAttributes.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Arith/IR/ArithOpsInterfaces.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Arith/IR/ArithOps.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Func/IR/FuncOps.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/CallInterfaces.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/CallInterfaces.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/FunctionInterfaces.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/TypeUtilities.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/FunctionInterfaces.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Func/IR/FuncOps.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Func/IR/FuncOpsDialect.h.inc \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Pass/Pass.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Action.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Unit.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Pass/AnalysisManager.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Pass/PassInstrumentation.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Pass/PassRegistry.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Pass/PassOptions.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/CommandLine.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/StringSaver.h \
+ /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/Statistic.h
+src/passes/Passes.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Arith/IR/Arith.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Bytecode/BytecodeOpInterface.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Bytecode/BytecodeImplementation.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Attributes.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/AttributeSupport.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/MLIRContext.h:
@@ -208,11 +246,14 @@ build/obj/tinyir-opt.o: src/tinyir-opt.cpp \
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Types.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/TypeSupport.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/Twine.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Diagnostics.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Location.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinLocationAttributes.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Dialect.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OperationSupport.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BlockSupport.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Value.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/UseDefLists.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Location.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinLocationAttributes.h.inc:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/ilist.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/simple_ilist.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/ilist_base.h:
@@ -252,21 +293,10 @@ build/obj/tinyir-opt.o: src/tinyir-opt.cpp \
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/ErrorOr.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/Format.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinAttributes.h.inc:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Diagnostics.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/TypeRange.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/ValueRange.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/Repeated.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/TrailingObjects.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/StringMap.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/StringMapEntry.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Debug/ExecutionContext.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Operation.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Region.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Support/ToolUtilities.h:
-src/dialect/Tutorial.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Bytecode/BytecodeOpInterface.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Bytecode/BytecodeImplementation.h:
-/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Dialect.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/DialectInterface.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OpImplementation.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinTypes.h:
@@ -277,20 +307,75 @@ src/dialect/Tutorial.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinTypeConstraints.h.inc:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OpDefinition.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/ODSSupport.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Operation.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Region.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/SMLoc.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OpAsmOpInterface.h.inc:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OpAsmDialectInterface.h.inc:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Bytecode/BytecodeDialectInterface.h.inc:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Bytecode/BytecodeOpInterface.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/CastInterfaces.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/CastInterfaces.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/ControlFlowInterfaces.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/PatternMatch.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Builders.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinOps.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/OwningOpRef.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/RegionKindInterface.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/RegionKindInterface.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/SymbolTable.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/SetVector.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/StringMap.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/StringMapEntry.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/RWMutex.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/Threading.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/SymbolInterfaces.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/SymbolInterfacesAttrInterface.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/SymbolInterfacesTypeInterface.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/DataLayoutInterfaces.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/TypeSize.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/DataLayoutAttrInterface.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/DataLayoutDialectInterface.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/DataLayoutOpInterface.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/DataLayoutTypeInterface.h.inc:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/SideEffectInterfaces.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/SideEffectInterfaces.h.inc:
-build/gen/Tutorial_Dialect.h.inc:
-build/gen/Tutorial_Ops.h.inc:
-src/dialect/List.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/BuiltinOps.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/PDLPatternMatch.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Config/mlir-config.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/TypeSwitch.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/ControlFlowInterfaces.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/InferIntDivisibilityOpInterface.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/InferIntDivisibilityOpInterface.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/InferIntRangeInterface.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/InferIntRangeInterface.h.inc:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/InferTypeOpInterface.h:
 /home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/InferTypeOpInterface.h.inc:
-build/gen/List_Dialect.h.inc:
-build/gen/List_Types.h.inc:
-build/gen/List_Ops.h.inc:
-src/passes/Passes.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/VectorInterfaces.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/VectorInterfaces.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/StringExtras.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/APSInt.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/SmallString.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Arith/IR/ArithOpsDialect.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Arith/IR/ArithOpsEnums.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Arith/IR/ArithOpsAttributes.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Arith/IR/ArithOpsInterfaces.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Arith/IR/ArithOps.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Func/IR/FuncOps.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/CallInterfaces.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/CallInterfaces.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/FunctionInterfaces.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/TypeUtilities.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Interfaces/FunctionInterfaces.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Func/IR/FuncOps.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Dialect/Func/IR/FuncOpsDialect.h.inc:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Pass/Pass.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Action.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/IR/Unit.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Pass/AnalysisManager.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Pass/PassInstrumentation.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Pass/PassRegistry.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/mlir/Pass/PassOptions.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/CommandLine.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/Support/StringSaver.h:
+/home/jason/.local/lib/python3.10/site-packages/mlir_wheel/include/llvm/ADT/Statistic.h:
