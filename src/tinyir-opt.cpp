@@ -27,10 +27,10 @@ int main(int argc, char **argv) {
   // 自定义pass
   tinyir::registerDemoPass();
   tinyir::registerInspectIRPass();
-  //tinyir::registerUseDefPass();
-  //tinyir::registerCFGInspectPass();
-  //tinyir::registerBuilderSafetyPass();
-  //tinyir::registerRewriterDemoPass();
+  tinyir::registerUseDefPass();
+  tinyir::registerCFGInspectPass();
+  tinyir::registerBuilderSafetyPass();
+  tinyir::registerRewriterDemoPass();
 
   return mlir::asMainReturnCode(
       mlir::MlirOptMain(

@@ -31,7 +31,6 @@ DIALECT_HDRS := $(wildcard $(DIALECT_DIR)/*.h)
 PASS_SRCS    := $(wildcard $(PASS_DIR)/*.cpp)
 PASS_HDRS    := $(wildcard $(PASS_DIR)/*.h)
 OPT_SRC      := $(SRC_DIR)/$(OPT).cpp
-TEST         := $(TEST_DIR)/passes/simpleAdd.mlir
 
 # outputs
 DIALECT_OBJS := $(patsubst $(DIALECT_DIR)/%.cpp,$(DIALECT_OBJ_DIR)/%.o,$(DIALECT_SRCS))
@@ -43,14 +42,21 @@ TBLGEN_STAMP := $(GEN_DIR)/.tblgen.stamp
 DEPS         := $(DIALECT_OBJS:.o=.d) $(PASS_OBJS:.o=.d) $(OPT_OBJ:.o=.d)
 
 # flags
-CPPFLAGS := -I$(MLIR_INCLUDE_DIR) -I$(SRC_DIR) -I$(DIALECT_DIR) -I$(PASS_DIR) -I$(GEN_DIR)
-CXXFLAGS := -std=c++17 -fPIC -MMD -MP
-TBLGEN_FLAGS := -I$(DIALECT_DIR) -I$(MLIR_INCLUDE_DIR) --write-if-changed
-LDFLAGS := -L $(MLIR_LIB_DIR) -Wl,-rpath,$(MLIR_LIB_DIR)
-LDLIBS := -lMLIR -lLLVM
+CPPFLAGS		:= -I$(MLIR_INCLUDE_DIR) -I$(SRC_DIR) -I$(DIALECT_DIR) -I$(PASS_DIR) -I$(GEN_DIR)
+CXXFLAGS 		:= -std=c++17 -fPIC -MMD -MP
+TBLGEN_FLAGS 	:= -I$(DIALECT_DIR) -I$(MLIR_INCLUDE_DIR) --write-if-changed
+LDFLAGS 		:= -L $(MLIR_LIB_DIR) -Wl,-rpath,$(MLIR_LIB_DIR)
+LDLIBS 			:= -lMLIR -lLLVM
+
+# pass
+TEST 			?= $(TEST_DIR)/passes/advanced/inspect-ir.mlir 
+PASS 			?= 
+PASSFLAGS 		:= -mlir-print-ir-before-all -mlir-print-ir-after-all \
+					$(if $(strip $(PASS)),--pass-pipeline='builtin.module(func.func($(PASS)))')
+
 
 # 声明伪目标
-.PHONY: all build tblgen test pass clean
+.PHONY: all build tblgen pass clean
 
 all: build
 
@@ -118,16 +124,12 @@ $(BIN): $(OPT_OBJ) $(LIB)
 		$(LDLIBS) \
 		-o $@
 
-### +TEST .mlir -> stdout
-test: $(BIN)
-	@echo "+TEST    $(TEST) --> stdout"
-	@$(BIN) $(TEST)
 
 ### +PASS .mlir -> stdout
 pass: $(BIN)
-	@echo "+PASS    $(TEST) --> simplify-add"
+	@echo "+PASS    $(TEST) --> $(PASS)"
 	@$(BIN) $(TEST) \
-		--pass-pipeline='builtin.module(func.func(inspect-ir))'
+		$(PASSFLAGS)
 
 
 
