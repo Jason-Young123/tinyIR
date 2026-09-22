@@ -11,7 +11,7 @@ void registerCFGInspectPass();
 void registerBuilderSafetyPass();
 void registerRewriterDemoPass();
 void registerListLowerFromElementsPass();
-void registerListSimplifyPass();
+void registerListLoweringPass();
 
 
 } // namespace tinyir

@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
   tinyir::registerBuilderSafetyPass();
   tinyir::registerRewriterDemoPass();
   tinyir::registerListLowerFromElementsPass();
-  tinyir::registerListSimplifyPass();
+  tinyir::registerListLoweringPass();
 
   return mlir::asMainReturnCode(
       mlir::MlirOptMain(

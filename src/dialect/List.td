@@ -81,6 +81,7 @@ def List_PushBackOp : List_Op<"push_back"> {
 
 def List_FromElementsOp : List_Op<"from_elements"> {
   let summary = "Create a list from zero or more SSA values";
+  let hasCanonicalizer = 1;
   let arguments = (ins Variadic<AnyInteger>:$elements);
   let results = (outs List_ListType:$result);
 }
@@ -112,6 +113,7 @@ def List_PopFrontOp : List_Op<"pop_front"> {
 def List_MapOp : List_Op<"map"> {
   let summary = "Map a region over all list elements";
   let arguments = (ins List_ListType:$input);
+  let hasCanonicalizer = 1;
   let hasVerifier = 1;
   let hasRegionVerifier = 1;
   let results = (outs List_ListType:$result);
