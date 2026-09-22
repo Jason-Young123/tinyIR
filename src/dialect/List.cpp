@@ -192,6 +192,22 @@ void mlir::list::MapOp::getCanonicalizationPatterns(
 
 
 //===----------------------------------------------------------------------===//
+// Folder
+//===----------------------------------------------------------------------===//
+mlir::OpFoldResult mlir::list::ReverseOp::fold(
+    FoldAdaptor adaptor) {
+  if (auto producer =
+          getInput()
+              .getDefiningOp<
+                  mlir::list::ReverseOp>()) {
+
+    return producer.getInput();
+  }
+  return {};
+}
+
+
+//===----------------------------------------------------------------------===//
 // Verification
 //===----------------------------------------------------------------------===//
 //   let hasVerifier = 1;

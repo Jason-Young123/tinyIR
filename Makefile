@@ -74,6 +74,8 @@ $(TBLGEN_STAMP): $(TD_SRCS)
 			"dialect-defs:Dialect.cpp.inc" \
 			"typedef-decls:Types.h.inc" \
 			"typedef-defs:Types.cpp.inc" \
+			"attrdef-decls:Attrs.h.inc" \
+			"attrdef-defs:Attrs.cpp.inc" \
 			"op-decls:Ops.h.inc" \
 			"op-defs:Ops.cpp.inc"; do \
 			gen=$${spec%%:*}; \

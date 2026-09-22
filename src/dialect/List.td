@@ -51,7 +51,28 @@ def List_ListType : List_Type<"List", "list"> { //List为cpp侧名称, list为.m
 }
 
 
-// step3: 定义一些traits, 比如用于Op定义过程中的类型推导等等
+// step3: 定义List_Attr
+// 定义所有List的共同Attr模板
+class List_Attr<
+    string name,
+    string mnemonic_,
+    list<Trait> traits = []>
+    : AttrDef<List_Dialect, name, traits> {
+
+  let mnemonic = mnemonic_; // 父类有mnemonic这个字段却不是构造参数,因此必须在内部手动赋值传递
+}
+
+def List_ListAttr : List_Attr<"List", "list"> {
+  let summary = "Compile-time constant list";
+
+  let parameters = (ins
+      "mlir::ArrayAttr":$elements);
+
+  let assemblyFormat =
+      "`<` $elements `>`";
+}
+
+// step4: 定义一些traits, 比如用于Op定义过程中的类型推导等等
 class List_ItemTypeMatchesElementType<string listArg, string itemArg>
     : TypesMatchWith<"type of '" # itemArg # "' matches the element type of '"
                      # listArg # "'", listArg, itemArg,
@@ -59,7 +80,7 @@ class List_ItemTypeMatchesElementType<string listArg, string itemArg>
                      ".getElementType()">;
 
 
-// step4: 定义一系列Ops
+// step5: 定义一系列Ops
 // 定义所有Op的共同基类
 class List_Op<string mnemonic, list<Trait> traits = []>
     : Op<List_Dialect, mnemonic, traits>;
@@ -129,18 +150,11 @@ def List_YieldOp : List_Op<"yield", [Terminator]> {
 
 // 利用traits简化assemblyFormat中的类型声明
 def List_ReverseOp : List_Op<"reverse"> {
-  let summary = "reverse the elements in a list";
-  let description = [{
-    Reverse the content of a list.
-    Example:
-    ```mlir
-    %lo = list.reverse %li : !list.list<i32> -> !list.list<i32>
-    ```
-  }];
+  let summary = "Reverse a list";
   let arguments = (ins List_ListType:$input);
   let results = (outs List_ListType:$result);
-  let assemblyFormat = "$input attr-dict `:` qualified(type($input)) `->` qualified(type($result))";
-}
 
+  let hasFolder = 1;
+}
 
 #endif // LIST_DIALECT
