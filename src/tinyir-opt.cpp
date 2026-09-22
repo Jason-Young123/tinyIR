@@ -31,6 +31,8 @@ int main(int argc, char **argv) {
   tinyir::registerCFGInspectPass();
   tinyir::registerBuilderSafetyPass();
   tinyir::registerRewriterDemoPass();
+  tinyir::registerListLowerFromElementsPass();
+  tinyir::registerListSimplifyPass();
 
   return mlir::asMainReturnCode(
       mlir::MlirOptMain(
