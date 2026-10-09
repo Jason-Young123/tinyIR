@@ -34,6 +34,8 @@ int main(int argc, char **argv) {
   tinyir::registerListLowerFromElementsPass();
   tinyir::registerListLoweringPass();
 
+  tinyir::registerDependencyDAGPass();
+
   return mlir::asMainReturnCode(
       mlir::MlirOptMain(
           argc,

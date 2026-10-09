@@ -13,6 +13,7 @@ void registerRewriterDemoPass();
 void registerListLowerFromElementsPass();
 void registerListLoweringPass();
 
+void registerDependencyDAGPass();
 
 } // namespace tinyir
 

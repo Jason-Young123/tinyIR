@@ -51,7 +51,9 @@ LDLIBS 			:= -lMLIR -lLLVM
 # pass
 TEST 			?= $(TEST_DIR)/passes/advanced/inspect-ir.mlir 
 PASS 			?= 
-PASSFLAGS 		:= -mlir-print-ir-before-all -mlir-print-ir-after-all \
+#PASSFLAGS 		:= -mlir-print-ir-before-all -mlir-print-ir-after-all \
+#					$(if $(strip $(PASS)),--pass-pipeline='builtin.module(func.func($(PASS)))')
+PASSFLAGS 		:= --mlir-disable-threading \
 					$(if $(strip $(PASS)),--pass-pipeline='builtin.module(func.func($(PASS)))')
 
 
@@ -130,8 +132,7 @@ $(BIN): $(OPT_OBJ) $(LIB)
 ### +PASS .mlir -> stdout
 pass: $(BIN)
 	@echo "+PASS    $(TEST) --> $(PASS)"
-	@$(BIN) $(TEST) \
-		$(PASSFLAGS)
+	@$(BIN) $(TEST) $(PASSFLAGS)
 
 
 
