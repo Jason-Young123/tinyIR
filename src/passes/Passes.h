@@ -14,6 +14,7 @@ void registerListLowerFromElementsPass();
 void registerListLoweringPass();
 
 void registerDependencyDAGPass();
+void registerLatencyListSchedulerPass();
 
 } // namespace tinyir
 

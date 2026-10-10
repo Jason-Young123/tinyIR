@@ -35,6 +35,7 @@ int main(int argc, char **argv) {
   tinyir::registerListLoweringPass();
 
   tinyir::registerDependencyDAGPass();
+  tinyir::registerLatencyListSchedulerPass();
 
   return mlir::asMainReturnCode(
       mlir::MlirOptMain(
