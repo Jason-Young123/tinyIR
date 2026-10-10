@@ -18,9 +18,9 @@
 namespace {
 
 // 目前仅支持三种指令, load/addi/muli,各自执行latency可在这里自定义
-unsigned gLoadExecTime = 10;
-unsigned gAddiExecTime = 1;
-unsigned gMuliExecTime = 5;
+unsigned gLat1ExecTime = 1;
+unsigned gLat5ExecTime = 5;
+unsigned gLat10ExecTime = 10;
 unsigned gMaxInFlight = 2; // 至多有2条指令可以并行执行
 
 struct TimingRecord {
@@ -36,18 +36,17 @@ struct ScheduleResult {
 
 bool isSupportedOp(mlir::Operation *op) {
   llvm::StringRef name = op->getName().getStringRef();
-  return name == "memref.load" || name == "arith.addi" ||
-         name == "arith.muli";
+  return name == "latency.lat1" || name == "latency.lat5" || name == "latency.lat10";
 }
 
 unsigned getExecTime(mlir::Operation *op) {
   llvm::StringRef name = op->getName().getStringRef();
-  if (name == "memref.load")
-    return gLoadExecTime;
-  if (name == "arith.addi")
-    return gAddiExecTime;
-  if (name == "arith.muli")
-    return gMuliExecTime;
+  if (name == "latency.lat1")
+    return gLat1ExecTime;
+  if (name == "latency.lat5")
+    return gLat5ExecTime;
+  if (name == "latency.lat10")
+    return gLat10ExecTime;
   return 0;
 }
 
@@ -296,9 +295,9 @@ struct LatencyListSchedulerPass : mlir::PassWrapper<LatencyListSchedulerPass, ml
     llvm::errs() << "\n========================================\n";
     llvm::errs() << "LatencyListScheduler: "
                  << func.getName() << "\n";
-    llvm::errs() << "hardware model: load=" << gLoadExecTime
-                 << ", addi=" << gAddiExecTime
-                 << ", muli=" << gMuliExecTime
+    llvm::errs() << "hardware model: lat1=" << gLat1ExecTime
+                 << ", lat5=" << gLat5ExecTime
+                 << ", lat10=" << gLat10ExecTime
                  << ", issueWidth=1"
                  << ", maxInFlight=" << gMaxInFlight << "\n";
 

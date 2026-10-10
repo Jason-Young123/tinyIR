@@ -3,8 +3,11 @@
 #include "mlir/InitAllPasses.h"
 #include "mlir/Tools/mlir-opt/MlirOptMain.h"
 
+// 自定义dialect
 #include "dialect/Tutorial.h"
 #include "dialect/List.h"
+#include "dialect/Latency.h"
+
 #include "passes/Passes.h" //用于提供注册函数
 
 int main(int argc, char **argv) {
@@ -22,7 +25,8 @@ int main(int argc, char **argv) {
   // 本项目自定义dialect
   registry.insert<
       mlir::tutorial::TutorialDialect,
-      mlir::list::ListDialect>();
+      mlir::list::ListDialect,
+      mlir::latency::LatencyDialect>();
 
   // 自定义pass
   tinyir::registerDemoPass();
